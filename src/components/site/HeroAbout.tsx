@@ -3,7 +3,8 @@ import { Check, HeartPulse } from "lucide-react";
 import { siteContent } from "@/content/siteContent";
 import { useLang, useReveal } from "@/lib/site";
 import { CtaButtons } from "./Cta";
-
+import ambienti from "@/gallery/ambienti.jpg";
+import baba from "@/gallery/BAZA.png";
 export function Hero() {
   const { t } = useLang();
   return (
@@ -25,7 +26,7 @@ export function Hero() {
         </div>
         <div className="hero-in relative [animation-delay:150ms]">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-lift sm:aspect-[5/5]">
-            <img src={siteContent.images.hero} alt={t({ sq: "Fizioterapist duke udhëhequr një ushtrim lëvizjeje", en: "Physiotherapist guiding a movement exercise" })} className="size-full object-cover" fetchPriority="high" />
+            <img src={baba} alt={t({ sq: "Fizioterapist duke udhëhequr një ushtrim lëvizjeje", en: "Physiotherapist guiding a movement exercise" })} className="size-full object-cover" fetchPriority="high" />
           </div>
           <div className="absolute -bottom-5 left-4 flex items-center gap-3 rounded-2xl bg-card p-4 pr-6 shadow-lift sm:left-[-1.5rem]">
             <span className="grid size-10 place-items-center rounded-full bg-sage-soft text-accent-foreground"><HeartPulse className="size-5" /></span>
@@ -69,7 +70,7 @@ export function About() {
     <section id="rreth-nesh" ref={ref} className="section-y">
       <div className="container-site grid items-center gap-14 lg:grid-cols-[.9fr_1.1fr]">
         <div className="reveal relative aspect-[4/5] overflow-hidden rounded-[2rem] shadow-soft">
-          <img src={siteContent.images.about} alt={t({ sq: "Ambient i ngrohtë i klinikës ATLAS", en: "Warm interior of the ATLAS clinic" })} loading="lazy" className="size-full object-cover" />
+          <img src={ambienti} alt={t({ sq: "Ambient i ngrohtë i klinikës ATLAS", en: "Warm interior of the ATLAS clinic" })} loading="lazy" className="size-full object-cover" />
         </div>
         <div className="reveal">
           <p className="eyebrow"><span className="size-1.5 rounded-full bg-sage" />{t({ sq: "Rreth ATLAS", en: "About ATLAS" })}</p>

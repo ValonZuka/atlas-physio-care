@@ -1,0 +1,82 @@
+diff --git a/src/components/site/Header.tsx b/src/components/site/Header.tsx
+index 92fedb8..6100f06 100644
+--- a/src/components/site/Header.tsx
++++ b/src/components/site/Header.tsx
+@@ -7,7 +7,7 @@ import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "./icons";
+ export function Logo({ light = false }: { light?: boolean }) {
+   return (
+     <a href="#ballina" className="flex items-center gap-2.5" aria-label="ATLAS Fizioterapi">
+-      <span className={`grid size-9 place-items-center rounded-xl text-lg font-bold ${light ? "bg-primary-foreground/15 text-primary-foreground" : "bg-primary text-primary-foreground"}`}>+</span>
++      <img src={light ? "/logo-mark-white.svg" : "/logo-mark.svg"} alt="" width={40} height={40} className="size-10 shrink-0" />
+       <span className="leading-none">
+         <span className="font-display block text-xl font-semibold">ATLAS</span>
+         <span className={`block text-[10px] font-semibold uppercase tracking-[0.2em] ${light ? "text-primary-foreground/70" : "text-muted-foreground"}`}>Fizioterapi</span>
+diff --git a/src/components/site/Sections.tsx b/src/components/site/Sections.tsx
+index 948e565..50ec6a3 100644
+--- a/src/components/site/Sections.tsx
++++ b/src/components/site/Sections.tsx
+@@ -112,6 +112,7 @@ export function Gallery() {
+     window.addEventListener("keydown", on);
+     return () => window.removeEventListener("keydown", on);
+   }, [idx, g.length]);
++  const cur = idx !== null ? g[idx] : undefined;
+   if (!g.length) return null;
+   return (
+     <section id="galeria" ref={ref} className="section-y">
+@@ -130,13 +131,13 @@ export function Gallery() {
+       </div>
+       <Dialog open={idx !== null} onOpenChange={(o) => !o && setIdx(null)}>
+         <DialogContent className="max-w-4xl border-0 bg-transparent p-0 shadow-none [&>button]:hidden">
+-          {idx !== null && (
++          {cur && (
+             <figure className="relative">
+-              <DialogTitle className="sr-only">{t(g[idx].alt)}</DialogTitle>
+-              <img src={g[idx].src} alt={t(g[idx].alt)} className="max-h-[80vh] w-full rounded-3xl object-contain" />
+-              <figcaption className="mt-3 text-center text-sm text-primary-foreground">{t(g[idx].label)} · {idx + 1}/{g.length}</figcaption>
+-              <button onClick={() => setIdx((idx - 1 + g.length) % g.length)} className="absolute left-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-card shadow-lift" aria-label={t({ sq: "Foto e mëparshme", en: "Previous photo" })}><ChevronLeft /></button>
+-              <button onClick={() => setIdx((idx + 1) % g.length)} className="absolute right-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-card shadow-lift" aria-label={t({ sq: "Foto tjetër", en: "Next photo" })}><ChevronRight /></button>
++              <DialogTitle className="sr-only">{t(cur.alt)}</DialogTitle>
++              <img src={cur.src} alt={t(cur.alt)} className="max-h-[80vh] w-full rounded-3xl object-contain" />
++              <figcaption className="mt-3 text-center text-sm text-primary-foreground">{t(cur.label)} · {(idx ?? 0) + 1}/{g.length}</figcaption>
++              <button onClick={() => setIdx(((idx ?? 0) - 1 + g.length) % g.length)} className="absolute left-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-card shadow-lift" aria-label={t({ sq: "Foto e mëparshme", en: "Previous photo" })}><ChevronLeft /></button>
++              <button onClick={() => setIdx(((idx ?? 0) + 1) % g.length)} className="absolute right-3 top-1/2 grid size-11 -translate-y-1/2 place-items-center rounded-full bg-card shadow-lift" aria-label={t({ sq: "Foto tjetër", en: "Next photo" })}><ChevronRight /></button>
+               <button onClick={() => setIdx(null)} className="absolute right-3 top-3 grid size-10 place-items-center rounded-full bg-card shadow-lift" aria-label={t({ sq: "Mbyll", en: "Close" })}><X className="size-5" /></button>
+             </figure>
+           )}
+@@ -183,14 +184,15 @@ export function Testimonials() {
+     const id = window.setInterval(() => setI((x) => (x + 1) % list.length), 6000);
+     return () => window.clearInterval(id);
+   }, [list.length, paused]);
+-  if (!list.length) return null;
++  const cur = list[i];
++  if (!cur) return null;
+   return (
+     <section className="section-y">
+       <div className="container-site text-center" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
+         <SectionHead center eyebrow={t({ sq: "Fjalët e klientëve", en: "What clients say" })} title={t({ sq: "Përvoja e pacientëve tanë", en: "Our patients' experience" })} />
+         <blockquote className="mx-auto mt-10 max-w-2xl" aria-live="polite">
+-          <p className="font-display text-2xl leading-snug">“{t(list[i].quote)}”</p>
+-          <footer className="mt-4 text-sm font-semibold text-muted-foreground">— {list[i].name}</footer>
++          <p className="font-display text-2xl leading-snug">“{t(cur.quote)}”</p>
++          <footer className="mt-4 text-sm font-semibold text-muted-foreground">— {cur.name}</footer>
+         </blockquote>
+         {list.length > 1 && (
+           <div className="mt-8 flex justify-center gap-2">
+diff --git a/src/routes/__root.tsx b/src/routes/__root.tsx
+index df24cff..561620a 100644
+--- a/src/routes/__root.tsx
++++ b/src/routes/__root.tsx
+@@ -87,7 +87,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
+         rel: "stylesheet",
+         href: appCss,
+       },
+-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
++      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
++      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
++      { rel: "icon", href: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
++      { rel: "icon", href: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
++      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
++      { rel: "manifest", href: "/site.webmanifest" },
+       { rel: "preconnect", href: "https://fonts.googleapis.com" },
+       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" },

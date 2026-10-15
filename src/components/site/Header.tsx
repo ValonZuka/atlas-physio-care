@@ -7,7 +7,7 @@ import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "./icons";
 export function Logo({ light = false }: { light?: boolean }) {
   return (
     <a href="#ballina" className="flex items-center gap-2.5" aria-label="ATLAS Fizioterapi">
-      <span className={`grid size-9 place-items-center rounded-xl text-lg font-bold ${light ? "bg-primary-foreground/15 text-primary-foreground" : "bg-primary text-primary-foreground"}`}>+</span>
+      <img src={light ? "/logo-mark-white.svg" : "/logo-mark.svg"} alt="" width={40} height={40} className="size-10 shrink-0" />
       <span className="leading-none">
         <span className="font-display block text-xl font-semibold">ATLAS</span>
         <span className={`block text-[10px] font-semibold uppercase tracking-[0.2em] ${light ? "text-primary-foreground/70" : "text-muted-foreground"}`}>Fizioterapi</span>

@@ -6,7 +6,22 @@
 import hero from "@/assets/atlas-hero.png.asset.json";
 import space from "@/assets/atlas-space.png.asset.json";
 import treatment from "@/assets/atlas-treatment.png.asset.json";
-
+import fizioterapiaImg from '../gallery/fizioterapia.jpg';
+import rehabilitimFiz from '../gallery/rehabilitim-fizik.jpg';
+import terapiaMan from '../gallery/terapia-manuale.jpg';
+import masazhTer from '../gallery/masazh-terapeutik.jpg';
+import rikuperim from '../gallery/rikuperim-pas-lendimeve.jpg';
+import dhimbjeMus from '../gallery/dhimbje-muskulore-dhe-artikulare.jpg';
+import trajtimShock from '../gallery/trajtimi-me-shockwawe.jpg'
+import rehabFill from '../gallery/image.png'
+import stenoz from '../gallery/stenoz.png'
+import kinesio from '../gallery/kinesio.png'
+import sporti from '../gallery/sporti.jpg'
+import lazer from '../gallery/lazer.png'
+import shtrat from '../gallery/shtrat.jpg'
+import kompresion from '../gallery/kompresion.png'
+import fizikaleTerapi from '../gallery/fizikaleTerapi.png'
+import shockwave from '../gallery/shockwawe.png'
 export type L = { sq: string; en: string };
 export type Lang = keyof L;
 
@@ -33,7 +48,7 @@ export const siteContent = {
     geo: { lat: 42.3223057, lng: 21.3586494 },
     mapEmbed: "https://www.google.com/maps?q=42.3223057,21.3586494&z=17&output=embed",
     mapLink:
-      "https://www.google.com/maps/place/ATLAS+FIZIOTERAPI/@42.3223096,21.3560745,585m/data=!3m2!1e3!4b1!4m6!3m5!1s0x135463e56947af7f:0xe2ed2186b4658456!8m2!3d42.3223057!4d21.3586494",
+      "https://www.google.com/maps/place/ATLAS+FIZIOTERAPI/@42.3223096,21.3560745,644m/data=!3m1!1e3!4m6!3m5!1s0x135463e56947af7f:0xe2ed2186b4658456!8m2!3d42.3223057!4d21.3586494!16s%2Fg%2F11npl07dfs?entry=ttu&g_ep=EgoyMDI2MTAxMi4wIKXMDSoASAFQAw%3D%3D",
   },
 
   socials: {
@@ -48,7 +63,97 @@ export const siteContent = {
    * When no real posts exist, only the follow buttons are shown.
    * Example: { real: true, platform: "instagram", url: "https://www.instagram.com/p/XXXX/", image: "https://...", caption: { sq: "", en: "" }, alt: { sq: "", en: "" } }
    */
-  socialPosts: [] as { real: boolean; platform: "instagram" | "facebook"; url: string; image: string; caption: L; alt: L }[],
+  /**
+   * Real social posts only. A post is shown only when `real: true`.
+   * When no real posts exist, only the follow buttons are shown.
+   */
+  socialPosts: [
+    {
+      real: true,
+      platform: "instagram",
+      url: "https://www.instagram.com/p/DaBG0WQDMwA/", // Your Instagram link
+      image: rehabFill, // A local fallback preview image from your gallery folder
+      caption: { 
+        sq: "Kujdesi ndaj trupit tuaj fillon me lëvizjen e duhur.", 
+        en: "Taking care of your body starts with the right movement." 
+      },
+      alt: { 
+        sq: "Postimi i parë nga klinika në Instagram", 
+        en: "First Instagram post from the clinic" 
+      }
+    },
+     {
+      real: true,
+      platform: "instagram",
+      url: "https://www.instagram.com/p/DaiMWWFjBBg/", // Your Instagram link
+      image: stenoz, // A local fallback preview image from your gallery folder
+      caption: { 
+        sq: "Stenozë lumbale – dekompresion kirurgjikal L3–L4 & L4–L5.", 
+        en: "Lumbar stenosis – surgical decompression L3–L4 & L4–L5." 
+      },
+      alt: { 
+        sq: "Postimi nga klinika në Instagram", 
+        en: "Instagram post from the clinic" 
+      }
+    },
+    {
+      real: true,
+      platform: "facebook",
+      url: "https://www.facebook.com/share/p/1FHN9zVqqr/", // Your Instagram link
+      image: kinesio, // A local fallback preview image from your gallery folder
+      caption: { 
+        sq: "Aplikimi profesional i Kinesio Tape!", 
+        en: "Professional application of Kinesio Tape!" 
+      },
+      alt: { 
+        sq: "Postimi nga klinika në Facebook", 
+        en: "Facebook post from the clinic" 
+      }
+    },
+     {
+      real: true,
+      platform: "instagram",
+      url: "https://www.instagram.com/p/DbTQC76jIh5/", // Your Instagram link
+      image: kompresion, // A local fallback preview image from your gallery folder
+      caption: { 
+        sq: "Terapi me Kompresion", 
+        en: "Therapy with Compression" 
+      },
+      alt: { 
+        sq: "Postimi nga klinika në Instagram", 
+        en: "Instagram post from the clinic" 
+      }
+    },
+    {
+      real: true,
+      platform: "facebook",
+      url: "https://www.facebook.com/share/p/19gj3D7tHh/", // Your Instagram link
+      image: fizikaleTerapi, // A local fallback preview image from your gallery folder
+      caption: { 
+        sq: "Terapi fizikale e individualizuar për korrigjim postrual", 
+        en: "Individualized physical therapy for postural correction" 
+      },
+      alt: { 
+        sq: "Postimi nga klinika në Facebook", 
+        en: "Facebook post from the clinic" 
+      }
+    },
+    {
+      real: true,
+      platform: "facebook",
+      url: "https://www.facebook.com/share/p/19gj3D7tHh/", // Your Instagram link
+      image: shockwave, // A local fallback preview image from your gallery folder
+      caption: { 
+        sq: "Trajtimi me Shockwave ndihmon në reduktimin e dhimbjes", 
+        en: "Shockwave therapy helps reduce pain and more" 
+      },
+      alt: { 
+        sq: "Postimi nga klinika në Facebook", 
+        en: "Facebook post from the clinic" 
+      }
+    },
+    // You can add more post objects below separating them with commas
+  ] as { real: boolean; platform: "instagram" | "facebook"; url: string; image: string; caption: L; alt: L }[],
 
   /** Leave empty to hide. Only add real, verified numbers. */
   stats: [] as { value: number; suffix?: string; label: L }[],
@@ -62,25 +167,39 @@ export const siteContent = {
     { name: "BSc.PT Elizabeta Mehmeti", role: { sq: "Fizioterapeute", en: "Physiotherapist" }, bio: { sq: "", en: "" }, photo: "" },
   ],
 
+  
   gallery: [
-    { src: space.url, alt: { sq: "Ambient i qetë i klinikës ATLAS", en: "Calm interior of the ATLAS clinic" }, label: { sq: "Ambient i qetë", en: "A calm space" } },
-    { src: treatment.url, alt: { sq: "Fizioterapeut duke kryer trajtim individual", en: "Physiotherapist giving one-to-one treatment" }, label: { sq: "Kujdes individual", en: "One-to-one care" } },
-    { src: hero.url, alt: { sq: "Ushtrim lëvizjeje i udhëhequr", en: "Guided movement exercise" }, label: { sq: "Lëvizje më e mirë", en: "Better movement" } },
-  ],
+    { 
+      src: sporti, 
+      alt: { sq: "Ambient i qetë i klinikës ATLAS", en: "Calm interior of the ATLAS clinic" }, 
+      label: { sq: "Ambient i qetë", en: "A calm space" } 
+    },
+    { 
+      src: lazer, 
+      alt: { sq: "Fizioterapeut duke kryer trajtim individual", en: "Physiotherapist giving one-to-one treatment" }, 
+      label: { sq: "Kujdes individual", en: "One-to-one care" },
+      scale: "115%",            // Scales the image inside the frame to adjust visible area
+      position: "center 15%"    // Vertically positions the asset up (e.g., 0% to 30% brings it up)
+    },
+    { 
+      src: shtrat, 
+      alt: { sq: "Ushtrim lëvizjeje i udhëhequr", en: "Guided movement exercise" }, 
+      label: { sq: "Lëvizje më e mirë", en: "Better movement" } 
+    },
+  ] as { src: any; alt: L; label: L; scale?: string; position?: string }[], // Definition update allows fields safely
 
-  images: { hero: hero.url, about: space.url },
 
   /** Optional: a real explainer video URL (mp4). When set, it replaces the animated phone demo. */
   bookingVideoUrl: "",
 
   services: [
-    { icon: "stethoscope" as ServiceIcon, title: { sq: "Fizioterapi", en: "Physiotherapy" }, copy: { sq: "Mbështetje profesionale për lëvizje më të mirë dhe mirëqenie të përditshme.", en: "Professional support for better movement and everyday wellbeing." }, details: { sq: "Vlerësim dhe trajtim i përshtatur për të përmirësuar lëvizjen, forcën dhe mirëqenien tuaj të përditshme.", en: "Assessment and tailored treatment to improve your movement, strength and everyday wellbeing." }, image: treatment.url },
-    { icon: "activity" as ServiceIcon, title: { sq: "Rehabilitim fizik", en: "Physical rehabilitation" }, copy: { sq: "Një qasje e strukturuar dhe e përshtatur me nevojat tuaja.", en: "A structured approach adapted to your needs." }, details: { sq: "Program i strukturuar rehabilitimi, i ndërtuar sipas nevojave tuaja dhe ritmit të rikuperimit.", en: "A structured rehabilitation programme built around your needs and recovery pace." }, image: hero.url },
-    { icon: "hand" as ServiceIcon, title: { sq: "Terapia manuale", en: "Manual therapy" }, copy: { sq: "Teknika të kujdesshme për të mbështetur lehtësimin dhe rikthimin në lëvizje.", en: "Careful techniques to support relief and a return to movement." }, details: { sq: "Teknika të kujdesshme manuale që synojnë lehtësimin e tensionit dhe rikthimin gradual të lëvizjes.", en: "Gentle hands-on techniques aimed at easing tension and gradually restoring movement." }, image: treatment.url },
-    { icon: "waves" as ServiceIcon, title: { sq: "Masazh terapeutik", en: "Therapeutic massage" }, copy: { sq: "Kujdes i fokusuar për relaksim, çlodhje dhe ndjesi më të mirë trupore.", en: "Focused care for relaxation, recovery and a better-feeling body." }, details: { sq: "Kujdes i fokusuar për relaksim, çlodhje dhe mbështetje të qarkullimit.", en: "Focused care for relaxation, recovery and healthy circulation." }, image: space.url },
-    { icon: "bandage" as ServiceIcon, title: { sq: "Rikuperim pas lëndimeve", en: "Injury recovery" }, copy: { sq: "Udhëzim gjatë procesit të rikuperimit, hap pas hapi.", en: "Guidance through your recovery, step by step." }, details: { sq: "Udhëzim profesional gjatë rikuperimit, me hapa të sigurt drejt aktivitetit tuaj.", en: "Professional guidance during recovery, with safe steps back to your activity." }, image: hero.url },
-    { icon: "bone" as ServiceIcon, title: { sq: "Dhimbje muskulore dhe artikulare", en: "Muscle & joint pain" }, copy: { sq: "Vëmendje e personalizuar për shqetësimet që ndikojnë në përditshmëri.", en: "Personal attention for the aches that affect your daily life." }, details: { sq: "Qasje individuale për shqetësimet muskulore dhe artikulare që ndikojnë në jetën e përditshme.", en: "An individual approach to muscle and joint problems that affect daily life." }, image: treatment.url },
-    { icon: "zap" as ServiceIcon, title: { sq: "Trajtimi me Shockwave", en: "Shockwave therapy" }, copy: { sq: "Ndihmon në reduktimin e dhimbjes dhe përmirësimin e funksionit te kalcifikimi i thembrës.", en: "Helps reduce pain and improve function with heel spurs." }, details: { sq: "Trajtimi me Shockwave ndihmon në reduktimin e dhimbjes dhe përmirësimin e funksionit te kalcifikimi i thembrës.", en: "Shockwave therapy helps reduce pain and improve function in heel spur (calcification) cases." }, image: treatment.url },
+    { icon: "stethoscope" as ServiceIcon, title: { sq: "Fizioterapi", en: "Physiotherapy" }, copy: { sq: "Mbështetje profesionale për lëvizje më të mirë dhe mirëqenie të përditshme.", en: "Professional support for better movement and everyday wellbeing." }, details: { sq: "Vlerësim dhe trajtim i përshtatur për të përmirësuar lëvizjen, forcën dhe mirëqenien tuaj të përditshme.", en: "Assessment and tailored treatment to improve your movement, strength and everyday wellbeing." }, image: fizioterapiaImg },
+    { icon: "activity" as ServiceIcon, title: { sq: "Rehabilitim fizik", en: "Physical rehabilitation" }, copy: { sq: "Një qasje e strukturuar dhe e përshtatur me nevojat tuaja.", en: "A structured approach adapted to your needs." }, details: { sq: "Program i strukturuar rehabilitimi, i ndërtuar sipas nevojave tuaja dhe ritmit të rikuperimit.", en: "A structured rehabilitation programme built around your needs and recovery pace." }, image: rehabilitimFiz },
+    { icon: "hand" as ServiceIcon, title: { sq: "Terapia manuale", en: "Manual therapy" }, copy: { sq: "Teknika të kujdesshme për të mbështetur lehtësimin dhe rikthimin në lëvizje.", en: "Careful techniques to support relief and a return to movement." }, details: { sq: "Teknika të kujdesshme manuale që synojnë lehtësimin e tensionit dhe rikthimin gradual të lëvizjes.", en: "Gentle hands-on techniques aimed at easing tension and gradually restoring movement." }, image: terapiaMan },
+    { icon: "waves" as ServiceIcon, title: { sq: "Masazh terapeutik", en: "Therapeutic massage" }, copy: { sq: "Kujdes i fokusuar për relaksim, çlodhje dhe ndjesi më të mirë trupore.", en: "Focused care for relaxation, recovery and a better-feeling body." }, details: { sq: "Kujdes i fokusuar për relaksim, çlodhje dhe mbështetje të qarkullimit.", en: "Focused care for relaxation, recovery and healthy circulation." }, image: masazhTer },
+    { icon: "bandage" as ServiceIcon, title: { sq: "Rikuperim pas lëndimeve", en: "Injury recovery" }, copy: { sq: "Udhëzim gjatë procesit të rikuperimit, hap pas hapi.", en: "Guidance through your recovery, step by step." }, details: { sq: "Udhëzim profesional gjatë rikuperimit, me hapa të sigurt drejt aktivitetit tuaj.", en: "Professional guidance during recovery, with safe steps back to your activity." }, image: rikuperim },
+    { icon: "bone" as ServiceIcon, title: { sq: "Dhimbje muskulore dhe artikulare", en: "Muscle & joint pain" }, copy: { sq: "Vëmendje e personalizuar për shqetësimet që ndikojnë në përditshmëri.", en: "Personal attention for the aches that affect your daily life." }, details: { sq: "Qasje individuale për shqetësimet muskulore dhe artikulare që ndikojnë në jetën e përditshme.", en: "An individual approach to muscle and joint problems that affect daily life." }, image: dhimbjeMus },
+    { icon: "zap" as ServiceIcon, title: { sq: "Trajtimi me Shockwave", en: "Shockwave therapy" }, copy: { sq: "Ndihmon në reduktimin e dhimbjes dhe përmirësimin e funksionit te kalcifikimi i thembrës.", en: "Helps reduce pain and improve function with heel spurs." }, details: { sq: "Trajtimi me Shockwave ndihmon në reduktimin e dhimbjes dhe përmirësimin e funksionit te kalcifikimi i thembrës.", en: "Shockwave therapy helps reduce pain and improve function in heel spur (calcification) cases." }, image: trajtimShock },
   ],
 
   /** Final "and more" card after the services; opens WhatsApp with this message. */
